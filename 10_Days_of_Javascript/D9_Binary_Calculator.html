@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Binary Calculator </title>
+    <style>
+        body {
+            width: 33%;
+        }
+
+        #res {
+            background-color: lightgray;
+            border: solid;
+            height: 48px;
+            font-size: 20px;
+        }
+
+        #btn0,
+        #btn1 {
+            background-color: lightgreen;
+            color: brown;
+        }
+
+        #btnClr,
+        #btnEql {
+            background-color: darkgreen;
+            color: white;
+        }
+
+        #btnSum,
+        #btnSub,
+        #btnMul,
+        #btnDiv {
+            background-color: black;
+            color: red;
+        }
+
+        .allbtns {
+            width: 25%;
+            height: 36px;
+            font-size: 18px;
+            margin: 0px;
+            float: left;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="res"></div>
+    <div id="btns">
+        <button onclick="display('0')" id="btn0" class="allbtns">0</button>
+        <button onclick="display('1')" id="btn1" class="allbtns">1</button>
+        <button id="btnClr" class="allbtns">C</button>
+        <button id="btnEql" class="allbtns">=</button>
+        <button onclick="display('+')" id="btnSum" class="allbtns">+</button>
+        <button onclick="display('-')" id="btnSub" class="allbtns">-</button>
+        <button onclick="display('*')" id="btnMul" class="allbtns">*</button>
+        <button onclick="display('/')" id="btnDiv" class="allbtns">/</button>
+    </div>
+    <script>
+        //btns select
+        const res = document.getElementById('res')
+        const btn0 = document.getElementById('btn0')
+        const btn1 = document.getElementById('btn1')
+        const btnClr = document.getElementById('btnClr')
+        const btnEql = document.getElementById('btnEql')
+        const btnSum = document.getElementById('btnSum')
+        const btnSub = document.getElementById('btnSub')
+        const btnMul = document.getElementById('btnMul')
+        const btnDiv = document.getElementById('btnDiv')
+        //clr f()
+        btnClr.addEventListener('click', () => {
+            res.innerText = ''
+            binaryAdder = 0;
+            binarysub = 0;
+        })
+        //on display f()
+        function display(a) {
+            res.innerText += a
+        }
+        //(=) lisent and all logic for binary calculator
+        btnEql.addEventListener('click', () => {
+            let math = res.innerText;
+            let ff = math.match(/(\+|\-|\*|\/)/g);
+            let numarray = math.match(/\d+/g);
+
+            //+ oprator
+            function binaryAdder(a) {
+                let binayadd = 0;
+
+                for (let n = 0; n <= a.length - 1; n++) {
+                    binayadd += parseInt(a[n], 2);
+
+                }
+                res.innerText = ''
+                return display(binayadd.toString(2))
+
+            }
+            //- oprator
+            function binarysub(a) {
+                let binarysub = parseInt(a[0], 2);
+                for (let n = 1; n <= a.length - 1; n++) {
+                    binarysub -= parseInt(a[n], 2);
+
+                }
+                res.innerText = ''
+                return display(binarysub.toString(2))
+            }
+            function binarymuti(a) {
+                let binarymulti;
+                // for(let n = 0; n <= a.length-1; n++){
+                //     binarymulti+=parseInt(a[n],2)*parseInt(a[n+1])
+                // }
+                binarymulti = parseInt(a[0], 2) * parseInt(a[1],2)
+                res.innerText = ''
+                return display(binarymulti.toString(2))
+            }
+            function binarydivi(a) {
+                let binarydivi;
+
+
+                binarydivi = Math.floor(parseInt(a[0], 2) / parseInt(a[1], 2));
+
+
+                res.innerText = ''
+                return display(binarydivi.toString(2))
+            }
+
+            if (ff[0] == '+') {
+                //+
+                binaryAdder(numarray)
+
+            }
+            else if (ff[0] == '-') {
+                //-
+                binarysub(numarray)
+            }
+            else if (ff[0] == '*') {
+                //*
+                binarymuti(numarray)
+            }
+            else if (ff[0] == '/') {
+                ///
+                binarydivi(numarray)
+            }
+
+
+        })
+
+    </script>
+</body>
+
+</html>
