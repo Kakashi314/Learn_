@@ -1,0 +1,3 @@
+fs_ modul io--> readfile --> callback
+<-#5(learn_with_sumit)->
+events_moduls-->callbacks
