@@ -1,0 +1,26 @@
+ctype.h: Character functions
+isdigit() returns non-0 if arg is digit 0 to 9
+isalpha() returns non-0 if arg is a letter of the alphabet
+isalnum() returns non-0 if arg is a letter or digit
+islower() returns non-0 if arg is lowercase letter
+isupper() returns non-0 if arg is uppercase letter
+
+math.h: Mathematics functions
+acos() returns arc cosine of arg
+asin() returns arc sine of arg
+atan() returns arc tangent of arg
+cos() returns cosine of arg
+exp() returns natural logarithim e
+fabs() returns absolute value of num
+sqrt() returns square root of num
+
+
+time.h: Time and Date functions
+time() returns current calender time of system
+difftime() returns difference in secs between two times
+clock() returns number of system clock cycles since program execution
+
+stdlib.h:Miscellaneous functions
+malloc() provides dynamic memory allocation, covered in future sections
+rand() as already described previously
+srand() used to set the starting point for rand()
